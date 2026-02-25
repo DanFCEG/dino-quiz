@@ -4,11 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dino Quiz!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Segoe UI', 'Comic Sans MS', cursive, sans-serif;
+      font-family: 'Nunito', 'Segoe UI', cursive, sans-serif;
       background: linear-gradient(160deg, #a8edea, #fed6e3);
       min-height: 100vh;
       display: flex;
@@ -20,6 +23,7 @@
     }
 
     h1 {
+      font-family: 'Fredoka One', cursive;
       font-size: clamp(2rem, 7vw, 3.5rem);
       color: #4a2f8a;
       text-shadow: 3px 3px 0 #f9c846;
@@ -788,19 +792,6 @@ async function showQuestion() {
         credit.textContent = 'Image: Wikipedia / Wikimedia Commons';
       };
       skelImg.onerror = () => { /* badge stays */ };
-      skelImg.src = skelSrc;
-    }
-  });
-
-  // ── Load SKELETON image (Wikipedia API) ─────────────────────────────────
-  getSkeletonImage(q.dino).then(skelSrc => {
-    if (skelSrc) {
-      skelImg.onload = () => {
-        badge.style.display = 'none';
-        skelImg.style.display = 'block';
-        credit.textContent = 'Image: Wikipedia / Wikimedia Commons';
-      };
-      skelImg.onerror = () => {};
       skelImg.src = skelSrc;
     }
   });
