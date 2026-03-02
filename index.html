@@ -714,6 +714,16 @@ function startGame() {
   }
   questions = deduped.slice(0, 15);
 
+  // Pre-fetch all images in background so they're cached when each question appears
+  questions.forEach(q => {
+    getSkeletonImage(q.dino).then(url => {
+      if (url) { const img = new Image(); img.src = url; }
+    });
+    getRestorationImage(q.dino).then(url => {
+      if (url) { const img = new Image(); img.src = url; }
+    });
+  });
+
   current = 0;
   score = 0;
   document.getElementById('end-screen').style.display = 'none';
